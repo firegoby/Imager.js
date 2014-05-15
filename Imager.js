@@ -125,12 +125,18 @@
     Imager.prototype.changeDivsToEmptyImages = function () {
         var divs = this.divs,
             i = divs.length,
-            gif;
+            gif,
+            otherClassNames;
 
         while (i--) {
             gif = this.gif.cloneNode(false);
             gif.width = divs[i].getAttribute('data-width');
             gif.setAttribute('data-src', divs[i].getAttribute('data-src'));
+            otherClassNames = divs[i].className.replace("imager ", "").trim();
+            gif.className = this.className.replace(/^[#.]/, '') + ' ' + otherClassNames;
+            if (divs[i].hasAttribute('id')) {
+                gif.id = divs[i].id;
+            }
             divs[i].parentNode.replaceChild(gif, divs[i]);
         }
 
