@@ -141,8 +141,7 @@
 
 
     Imager.prototype.checkImagesNeedReplacing = function () {
-        var self = this,
-            images = $(this.className),
+        var images = $(this.className),
             i = images.length;
 
         if (!this.isResizing) {
@@ -244,11 +243,9 @@
             switch (mode) {
                 case "0":
                     return '/image/0/' + path;
-                    break;
                 case "1":
                 case "4":
                     return '/image/' + mode + '/' + selectedWidth + '/0/' + path;
-                    break;
                 case "2":
                 case "3":
                     var newHeight = Math.ceil((selectedWidth / width) * parseInt(height, 10));
@@ -257,7 +254,6 @@
                         newsrc += bg + '/';
                     }
                     return newsrc + path;
-                    break;
             }
         });
     };
@@ -280,7 +276,7 @@
                 if (!execAsap)
                     func.apply(obj, args);
                 timeout = null;
-            };
+            }
             if (timeout) {
                 clearTimeout(timeout);
             } else if (execAsap) {
@@ -303,7 +299,7 @@
 // IE 9/10 CustomEvent Polyfill
 (function () {
     if (window.CustomEvent) { // prevent IE8 throwing its teddies out of the pram
-        function CustomEvent ( event, params ) {
+        var CustomEvent = function( event, params ) {
             params = params || { bubbles: false, cancelable: false, detail: undefined };
             var evt = document.createEvent( 'CustomEvent' );
             evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
@@ -315,3 +311,4 @@
         window.CustomEvent = CustomEvent;
     }
 })();
+
