@@ -132,8 +132,8 @@
             gif = this.gif.cloneNode(false);
             gif.width = divs[i].getAttribute('data-width');
             gif.setAttribute('data-src', divs[i].getAttribute('data-src'));
-            otherClassNames = divs[i].className.replace("imager ", "").trim();
-            gif.className = this.className.replace(/^[#.]/, '') + ' ' + otherClassNames;
+            otherClassNames = divs[i].className.replace(this.selector.replace(/^[#.]/, ''), "").trim();
+            gif.className = (this.className.replace(/^[#.]/, '') + ' ' + otherClassNames).trim();
             if (divs[i].hasAttribute('id')) {
                 gif.id = divs[i].id;
             }
