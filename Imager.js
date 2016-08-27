@@ -132,7 +132,9 @@
             gif = this.gif.cloneNode(false);
             gif.width = divs[i].getAttribute('data-width');
             gif.setAttribute('data-src', divs[i].getAttribute('data-src'));
-            gif.setAttribute('alt', divs[i].getAttribute('data-alt'));
+            if (divs[i].hasAttribute('data-alt')) {
+                gif.setAttribute('alt', divs[i].getAttribute('data-alt'));
+            }
             otherClassNames = divs[i].className.replace(this.selector.replace(/^[#.]/, ''), "").trim();
             gif.className = (this.className.replace(/^[#.]/, '') + ' ' + otherClassNames).trim();
             if (divs[i].hasAttribute('id')) {
