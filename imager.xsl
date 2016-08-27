@@ -7,7 +7,7 @@
         <xsl:param name="class" select="'imager'"/>
         <xsl:param name="alt" select="''"/>
         <xsl:param name="jit" select="'/image/1/{$width}/0'"/>
-        <div class="{$class}" data-src="{$jit}{$image/@path}/{$image/filename}" data-width="{$width}">
+        <div class="{$class}" data-src="{$jit}{$image/@path}/{$image/filename}" data-width="{$width}" data-alt="{$alt}">
             <noscript>
                 <img src="{$jit}{$image/@path}/{$image/filename}" alt="{$alt}"/>
             </noscript>
